@@ -4,6 +4,10 @@ class Screen
 {
     public:
         bool screen[50][50];
+        Screen()
+                { erase(); }
+        ~Screen() {}
+
         void PrintScreen()
         {
             printf("Welcome to the poorSnake 0.0.1!\tI hope you enjoy this lame game...\n");
@@ -16,7 +20,7 @@ class Screen
                 printf("#");
                 for (j = 0; j < 50; j++)
                 {
-                    if (screen[i][j])
+                    if (screen[j][i])
                         printf("*");
                     else
                         printf(" ");
@@ -25,7 +29,7 @@ class Screen
             }
             for (i = 0; i < 52; i++)
                 printf("#");
-            printf("\nCopyrights... fuck this shit\n");
+            printf("\nCopyrights...\n");
         }
         void erase()
         {

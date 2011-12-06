@@ -1,13 +1,12 @@
 #include <cstdlib>
 #include <cstdio>
 #include <ctime>
-#include <windows.h>
+//#include <windows.h>
 
 #include "entity.h"
 #include "screen.h"
-#include "direction.h"
 #include "coord.h"
-//#include "snake_.h"
+#include "snake_.h"
 #include "food.h"
 #include "game.h"
 

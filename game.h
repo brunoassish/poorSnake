@@ -1,66 +1,67 @@
 #pragma once
 
-//#include "snake_.h"
+#include "snake_.h"
 #include "screen.h"
 #include "food.h"
-#include "direction.h"
 #include <cstdlib>
-
+//#include <windows.h>
+#include <ctime>
 
 class Game
 {
     private:
-        //Snake player;
+        Snake player;
         Food targets[10];
         Screen SCR;
     public:
         Game()
         {
             int i;// j;
-            //newD << UP;
             setScreen(0);
             SCR.PrintScreen();
             Sleep(2000);
-            for (i = 0; i < 30; i++)
-            {Sleep(200);
-            if (system("CLS")) system("clear");
-            if (i<10)
-                {setScreen(i);}
-            SCR.screen[i][i] = true;
-            SCR.PrintScreen();}
+            for (i = 0; i < 10; i++)
+            {
+                Sleep(200);
+                if (system("CLS"))
+                    {system("clear");}
+                setScreen(i);
+                SCR.screen[i][i] = true;
+                player.up();
+                player.right();
+                player.Ate();
+                SCR.PrintScreen();}
 
         }
         ~Game() {}
 
-        /*void moveSnake()
+        void moveSnake(char C)
         {
-            Direction newD(true, false);
-            Direction lastD(false, false);
-            if (newD.getA()!=lastD.getA())
+            switch (C)
             {
-                if ((newD.getA()))
-                {
-                    if(newD.getB())
-                    { player.up();    }
-                    else
-                    { player.down();  }
-                }
-                else
-                {
-                    if(newD.getB())
-                    { player.right(); }
-                    else
-                    { player.left();  }
-                }
-            lastD<<newD;
+                case 'w':
+                    { player.up();    break; }
+                case 's':
+                    { player.down();  break; }
+                case 'd':
+                    { player.right(); break; }
+                case 'a':
+                    { player.left();  break; }
+                default:
+                    break;
             }
-        }*/
+        }
+
         void setScreen(int i)
         {
             SCR.erase();
-            //player.print(SCR);
+            player.print(SCR);
             targets[i].print(SCR);
         }
-
-
+        void Sleep (unsigned long int milisec)
+        {
+            clock_t endwait;
+            endwait = clock () + ((milisec * CLOCKS_PER_SEC)/1000) ;
+            while (clock() < endwait) {}
+        }
 };

@@ -8,11 +8,12 @@ class Entity
     protected:
         Coord position;
     public:
-        Entity(const unsigned short int X, const unsigned short int Y)
+        Entity(unsigned short int X, unsigned short int Y)
         {
             position.x = X;
             position.y = Y;
         }
+        Entity() {}
         ~Entity() {}
         virtual void print(Screen& SCR)
         {
@@ -29,24 +30,24 @@ class Entity
         {
             return position;
         }
-        void up()
-        {
-            position.y++;
-        }
-        void down()
+        virtual void up()
         {
             position.y--;
         }
-        void right()
+        virtual void down()
+        {
+            position.y++;
+        }
+        virtual void right()
         {
             position.x++;
         }
-        void left()
+        virtual void left()
         {
             position.x--;
         }
-        void operator= (Entity& ET)
+        void operator= (Entity* ET)
         {
-            setPos(ET.getPos());
+            setPos(ET->getPos());
         }
 };

@@ -32,7 +32,6 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="coord.h" />
-		<Unit filename="direction.h" />
 		<Unit filename="entity.h" />
 		<Unit filename="food.h" />
 		<Unit filename="game.h" />
